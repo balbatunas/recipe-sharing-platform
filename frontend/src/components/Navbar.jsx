@@ -40,14 +40,6 @@ export default function Navbar() {
                 className="nav-link"
                 href="#"
               >
-                Log in
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="#"
-              >
                 Sign up
               </a>
             </li>
