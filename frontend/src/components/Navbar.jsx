@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -27,21 +29,21 @@ export default function Navbar() {
         >
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a
-                className="nav-link active"
-                href="#"
+              <NavLink
+                to="/"
+                className="nav-link"
                 aria-current="page"
               >
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a
+              <NavLink
+                to="/register"
                 className="nav-link"
-                href="#"
               >
-                Sign up
-              </a>
+                Register
+              </NavLink>
             </li>
           </ul>
         </div>
