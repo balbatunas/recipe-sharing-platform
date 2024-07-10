@@ -1,6 +1,8 @@
 package lt.techin.recipe.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
@@ -11,8 +13,8 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    //    @NotNull
-    //    @Length(min = 1, max = 100)
+    @NotNull
+    @Length(min = 1, max = 100)
     private String roleName;
 
     public int getId() {
@@ -27,14 +29,13 @@ public class Role implements GrantedAuthority {
         this.roleName = roleName;
     }
 
-    public Role(String role_name, int id) {
+    public Role(String role_name) {
         this.roleName = role_name;
-        this.id = id;
     }
 
     public Role() {}
 
-    //    @Override
+    @Override
     public String getAuthority() {
         return this.roleName;
     }
