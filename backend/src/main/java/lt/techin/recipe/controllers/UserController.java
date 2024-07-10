@@ -47,7 +47,7 @@ public class UserController {
 
         if (this.userRepository.existsByEmail(user.getEmail())) {
             HashMap<String, String> response = new HashMap<>();
-            response.put("message", "This user " + user.getUserName() + " already exist in this DB");
+            response.put("message", "This user " + user.getUsername() + " already exist in this DB");
             return ResponseEntity.status(400).body(response);
         }
 
@@ -59,7 +59,7 @@ public class UserController {
     @PostMapping("/login")
     public Optional<User> login(@RequestBody User user) {
 
-        Optional<User> userDb = this.userRepository.findUserByEmail(user.getUserName());
+        Optional<User> userDb = this.userRepository.findUserByEmail(user.getUsername());
         if (passwordEncoder.matches(user.getPassword(), userDb.get().getPassword())) {
             return userDb;
         }
