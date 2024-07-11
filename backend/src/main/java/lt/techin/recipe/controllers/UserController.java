@@ -26,7 +26,7 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @PostMapping("/users")
+    @PostMapping("/register")
     public ResponseEntity<?> postUser(@Valid @RequestBody User user) {
 
         if (this.userRepository.existsByEmail(user.getEmail())) {
@@ -39,6 +39,4 @@ public class UserController {
 
         return ResponseEntity.status(201).body(this.userRepository.save(user));
     }
-
-
 }
