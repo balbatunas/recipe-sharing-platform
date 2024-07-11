@@ -13,6 +13,7 @@ export default function Register() {
           name="first-name"
           id="first-name"
           className="form-control"
+          autoComplete="given-name"
         />
       </div>
 
@@ -28,6 +29,7 @@ export default function Register() {
           name="last-name"
           id="last-name"
           className="form-control"
+          autoComplete="family-name"
         />
       </div>
 
@@ -43,6 +45,7 @@ export default function Register() {
           name="username"
           id="username"
           className="form-control"
+          autoComplete="username"
         />
       </div>
 
@@ -58,6 +61,7 @@ export default function Register() {
           name="email"
           id="email"
           className="form-control"
+          autoComplete="email"
         />
       </div>
 
@@ -65,6 +69,7 @@ export default function Register() {
         <label
           htmlFor="password"
           className="form-label"
+          autoComplete="new-password"
         >
           Password
         </label>
@@ -80,6 +85,7 @@ export default function Register() {
         <label
           htmlFor="repeat-password"
           className="form-label"
+          autoComplete="new-password"
         >
           Repeat password
         </label>
@@ -151,6 +157,7 @@ export default function Register() {
         <select
           className="form-select"
           id="country"
+          autoComplete="country"
         >
           <option defaultValue>Choose your country</option>
           <option value="Lithuania">Lithuania</option>
