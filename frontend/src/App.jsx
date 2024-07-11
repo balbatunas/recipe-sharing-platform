@@ -7,7 +7,7 @@ import Homepage from "./components/Homepage";
 function App() {
   return (
     <>
-      <header>
+      <header className="mb-3">
         <Navbar />
       </header>
 
