@@ -57,15 +57,14 @@ public class User implements UserDetails {
 
     @Length(min = 2, max = 100)
     @NotNull
-    //    @Pattern(regexp = "^[A-Z][a-zA-Z]+$", message = ("You must enter only letters. First letter must be capital
-    // one"))
+    @Pattern(regexp = "^[A-Z][a-zA-Z]+$", message = ("You must enter only letters. First letter must be capital one"))
     private String lastName;
 
     @Length(min = 1, max = 255)
     @NotNull
     @Pattern(
-            regexp = "^([A-Z][a-z]*)",
-            message = ("You must enter only letters.")) // Cannot contain more that one space after another one
+            regexp = "^([a-zA-Z0-9]+\\s)*[a-zA-Z0-9]+$",
+            message = "You must enter only letters.") // Cannot contain more that one space after another one
     private String username;
 
     @NotNull
