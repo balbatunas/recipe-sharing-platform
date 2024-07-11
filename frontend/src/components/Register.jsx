@@ -179,7 +179,7 @@ export default function Register() {
           autoComplete="country"
           {...register("country", { required: true })}
         >
-          <option defaultValue>Choose your country</option>
+          <option value="">Choose your country</option>
           <option value="Lithuania">Lithuania</option>
           <option value="Latvia">Latvia</option>
           <option value="Estonia">Estonia</option>
