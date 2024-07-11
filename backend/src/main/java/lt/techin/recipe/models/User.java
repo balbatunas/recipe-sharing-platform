@@ -1,8 +1,6 @@
 package lt.techin.recipe.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
@@ -28,7 +26,7 @@ public class User implements UserDetails {
     public User(
             String firstName,
             String lastName,
-            String userName,
+            String username,
             String email,
             String password,
             LocalDate dateOfBirth,
@@ -37,7 +35,7 @@ public class User implements UserDetails {
             boolean isPrivacyPolicyAccepted) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
@@ -67,7 +65,7 @@ public class User implements UserDetails {
     @Pattern(
             regexp = "^[a-zA-Z0-9][A-Z0-9 ]*$",
             message = ("You must enter only letters.")) // Cannot contain more that one space after another one
-    private String userName;
+    private String username;
 
     @NotNull
     @Length(min = 5, max = 200)
@@ -81,8 +79,8 @@ public class User implements UserDetails {
                     ("Must contain at least one uppercase, lowercase letter, number, and any of these special symbols: !@#$%^&*"))
     private String password;
 
-    @Min(1900)
-    @Max(2011)
+    //    @Min(1900)
+    //    @Max(2011)
     @NotNull
     private LocalDate dateOfBirth;
 
@@ -111,12 +109,12 @@ public class User implements UserDetails {
         this.firstName = firstName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
