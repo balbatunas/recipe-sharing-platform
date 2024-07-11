@@ -20,7 +20,7 @@ public class User implements UserDetails {
             name = "Users_Roles",
             joinColumns = @JoinColumn(name = "User_id"),
             inverseJoinColumns = @JoinColumn(name = "Role_id"))
-    @NotNull
+    //    @NotNull
     private List<Role> roles;
 
     public User(
@@ -57,13 +57,14 @@ public class User implements UserDetails {
 
     @Length(min = 2, max = 100)
     @NotNull
-    @Pattern(regexp = "^[A-Z][a-zA-Z]+$", message = ("You must enter only letters. First letter must be capital one"))
+    //    @Pattern(regexp = "^[A-Z][a-zA-Z]+$", message = ("You must enter only letters. First letter must be capital
+    // one"))
     private String lastName;
 
     @Length(min = 1, max = 255)
     @NotNull
     @Pattern(
-            regexp = "^[a-zA-Z0-9][A-Z0-9 ]*$",
+            regexp = "^([A-Z][a-z]*)",
             message = ("You must enter only letters.")) // Cannot contain more that one space after another one
     private String username;
 
@@ -73,10 +74,11 @@ public class User implements UserDetails {
 
     @NotNull
     @Length(min = 8, max = 255)
-    @Pattern(
-            regexp = "(?=.*)(?=.*[a-z])(?=.*[A-Z])(?=.*)",
-            message =
-                    ("Must contain at least one uppercase, lowercase letter, number, and any of these special symbols: !@#$%^&*"))
+    //    @Pattern(
+    //            regexp = "(?=.*)(?=.*[a-z])(?=.*[A-Z])(?=.*)",
+    //            message =
+    //                    ("Must contain at least one uppercase, lowercase letter, number, and any of these special
+    // symbols: !@#$%^&*"))
     private String password;
 
     //    @Min(1900)
@@ -109,9 +111,9 @@ public class User implements UserDetails {
         this.firstName = firstName;
     }
 
-    public String getUsername() {
-        return username;
-    }
+    //    public String getUsername() {
+    //        return username;
+    //    }
 
     public void setUsername(String username) {
         this.username = username;
