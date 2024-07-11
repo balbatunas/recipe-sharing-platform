@@ -22,7 +22,6 @@ export default function Register() {
         </label>
         <input
           type="text"
-          name="first-name"
           id="first-name"
           className="form-control"
           autoComplete="given-name"
@@ -42,7 +41,6 @@ export default function Register() {
         </label>
         <input
           type="text"
-          name="last-name"
           id="last-name"
           className="form-control"
           autoComplete="family-name"
@@ -62,7 +60,6 @@ export default function Register() {
         </label>
         <input
           type="text"
-          name="username"
           id="username"
           className="form-control"
           autoComplete="username"
@@ -82,7 +79,6 @@ export default function Register() {
         </label>
         <input
           type="email"
-          name="email"
           id="email"
           className="form-control"
           autoComplete="email"
@@ -103,7 +99,6 @@ export default function Register() {
         </label>
         <input
           type="password"
-          name="password"
           id="password"
           className="form-control"
           {...register("password", { required: true })}
@@ -123,7 +118,6 @@ export default function Register() {
         </label>
         <input
           type="password"
-          name="repeat-password"
           id="repeat-password"
           className="form-control"
           {...register("repeatPassword", { required: true })}
@@ -138,7 +132,6 @@ export default function Register() {
         <div className="form-check">
           <input
             type="radio"
-            name="gender"
             id="female"
             className="form-check-input"
             value="Female"
@@ -155,7 +148,6 @@ export default function Register() {
         <div className="form-check">
           <input
             type="radio"
-            name="gender"
             id="male"
             className="form-check-input"
             value="Male"
@@ -172,7 +164,6 @@ export default function Register() {
         <div className="form-check">
           <input
             type="radio"
-            name="gender"
             id="other"
             className="form-check-input"
             value="Other"
@@ -213,7 +204,6 @@ export default function Register() {
       <div className="mb-3 form-check">
         <input
           type="checkbox"
-          name="privacy-policy"
           id="privacy-policy"
           className="form-check-input"
           value="isPrivacyPolicyAccepted"
