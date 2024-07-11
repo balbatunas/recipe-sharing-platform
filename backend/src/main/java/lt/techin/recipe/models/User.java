@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class User implements UserDetails {
             String userName,
             String email,
             String password,
-            int dateOfBirth,
+            LocalDate dateOfBirth,
             String gender,
             String country,
             boolean isPrivacyPolicyAccepted) {
@@ -83,7 +84,7 @@ public class User implements UserDetails {
     @Min(1900)
     @Max(2011)
     @NotNull
-    private int dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @Length(min = 4, max = 6)
     private String gender;
@@ -144,11 +145,11 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public int getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(int dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
