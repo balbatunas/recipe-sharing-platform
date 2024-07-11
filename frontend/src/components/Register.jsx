@@ -1,6 +1,18 @@
+import { useForm } from "react-hook-form";
+
 export default function Register() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
+
   return (
-    <form className="col-12 col-md-4 mx-auto">
+    <form
+      className="col-12 col-md-4 mx-auto"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <div className="mb-3">
         <label
           htmlFor="first-name"
@@ -14,6 +26,7 @@ export default function Register() {
           id="first-name"
           className="form-control"
           autoComplete="given-name"
+          {...register("firstName", { required: true })}
         />
       </div>
 
@@ -30,6 +43,7 @@ export default function Register() {
           id="last-name"
           className="form-control"
           autoComplete="family-name"
+          {...register("lastName", { required: true })}
         />
       </div>
 
@@ -46,6 +60,7 @@ export default function Register() {
           id="username"
           className="form-control"
           autoComplete="username"
+          {...register("username", { required: true })}
         />
       </div>
 
@@ -62,6 +77,7 @@ export default function Register() {
           id="email"
           className="form-control"
           autoComplete="email"
+          {...register("email", { required: true })}
         />
       </div>
 
@@ -78,6 +94,7 @@ export default function Register() {
           name="password"
           id="password"
           className="form-control"
+          {...register("password", { required: true })}
         />
       </div>
 
@@ -94,6 +111,7 @@ export default function Register() {
           name="repeat-password"
           id="repeat-password"
           className="form-control"
+          {...register("repeatPassword", { required: true })}
         />
       </div>
 
@@ -105,7 +123,7 @@ export default function Register() {
             name="gender"
             id="female"
             className="form-check-input"
-            value="female"
+            {...register("gender")}
           />
           <label
             htmlFor="female"
@@ -121,7 +139,7 @@ export default function Register() {
             name="gender"
             id="male"
             className="form-check-input"
-            value="male"
+            {...register("gender")}
           />
           <label
             htmlFor="male"
@@ -137,7 +155,7 @@ export default function Register() {
             name="gender"
             id="other"
             className="form-check-input"
-            value="other"
+            {...register("gender")}
           />
           <label
             htmlFor="other"
@@ -159,6 +177,7 @@ export default function Register() {
           className="form-select"
           id="country"
           autoComplete="country"
+          {...register("country", { required: true })}
         >
           <option defaultValue>Choose your country</option>
           <option value="Lithuania">Lithuania</option>
@@ -174,6 +193,7 @@ export default function Register() {
           id="privacy-policy"
           className="form-check-input"
           value="isPrivacyPolicyAccepted"
+          {...register("isPrivacyPolicyAccepted", { required: true })}
         />
         <label
           htmlFor="privacy-policy"
