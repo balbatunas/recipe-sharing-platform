@@ -28,6 +28,9 @@ export default function Register() {
           autoComplete="given-name"
           {...register("firstName", { required: true })}
         />
+        {errors.firstName?.type == "required" && (
+          <div className="text-danger">This field is required</div>
+        )}
       </div>
 
       <div className="mb-3">
@@ -45,6 +48,9 @@ export default function Register() {
           autoComplete="family-name"
           {...register("lastName", { required: true })}
         />
+        {errors.lastName?.type === "required" && (
+          <div className="text-danger">This field is required</div>
+        )}
       </div>
 
       <div className="mb-3">
@@ -62,6 +68,9 @@ export default function Register() {
           autoComplete="username"
           {...register("username", { required: true })}
         />
+        {errors.username?.type === "required" && (
+          <div className="text-danger">This field is required</div>
+        )}
       </div>
 
       <div className="mb-3">
@@ -79,6 +88,9 @@ export default function Register() {
           autoComplete="email"
           {...register("email", { required: true })}
         />
+        {errors.email?.type === "required" && (
+          <div className="text-danger">This field is required</div>
+        )}
       </div>
 
       <div className="mb-3">
@@ -96,6 +108,9 @@ export default function Register() {
           className="form-control"
           {...register("password", { required: true })}
         />
+        {errors.password?.type === "required" && (
+          <div className="text-danger">This field is required</div>
+        )}
       </div>
 
       <div className="mb-3">
@@ -113,6 +128,9 @@ export default function Register() {
           className="form-control"
           {...register("repeatPassword", { required: true })}
         />
+        {errors.repeatPassword?.type == "required" && (
+          <div className="text-danger">This field is required</div>
+        )}
       </div>
 
       <fieldset className="mb-3">
@@ -184,6 +202,9 @@ export default function Register() {
           <option value="Latvia">Latvia</option>
           <option value="Estonia">Estonia</option>
         </select>
+        {errors.country?.type === "required" && (
+          <div className="text-danger">This field is required</div>
+        )}
       </div>
 
       <div className="mb-3 form-check">
@@ -201,6 +222,11 @@ export default function Register() {
         >
           I accept Privacy Policy
         </label>
+        {errors.isPrivacyPolicyAccepted?.type === "required" && (
+          <div className="text-danger">
+            You must check this in order to continue
+          </div>
+        )}
       </div>
 
       <button className="btn btn-primary">Submit</button>
