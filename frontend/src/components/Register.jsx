@@ -141,6 +141,7 @@ export default function Register() {
             name="gender"
             id="female"
             className="form-check-input"
+            value="Female"
             {...register("gender")}
           />
           <label
@@ -157,6 +158,7 @@ export default function Register() {
             name="gender"
             id="male"
             className="form-check-input"
+            value="Male"
             {...register("gender")}
           />
           <label
@@ -173,6 +175,7 @@ export default function Register() {
             name="gender"
             id="other"
             className="form-check-input"
+            value="Other"
             {...register("gender")}
           />
           <label
