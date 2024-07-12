@@ -37,6 +37,11 @@ public class UserController {
             return ResponseEntity.status(400).body(response);
         }
 
+        if (this.userRepository.existsByUsername(user.getUsername())) {
+            response.put("username", "Already exists");
+            return ResponseEntity.status(400).body(response);
+        }
+
         // Naudojame if sakini, kadangi nera tokios anotacijos
         if (user.getDateOfBirth().isBefore(LocalDate.of(1900, 1, 1))
                 || ChronoUnit.YEARS.between(user.getDateOfBirth(), LocalDate.now()) < 13) {
