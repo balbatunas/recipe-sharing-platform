@@ -34,11 +34,12 @@ public class User implements UserDetails {
             message = ("You can only enter letters. First letter must be capital. At least 2 characters long"))
     private String lastName;
 
-    @Length(min = 1, max = 255)
-    @NotNull
+    @NotEmpty(message = "Cannot be null or empty")
+    @Length(max = 255, message = "Maximum length is 255 characters")
     @Pattern(
-            regexp = "^([a-zA-Z0-9]+\\s)*[a-zA-Z0-9]+$",
-            message = "You must enter only letters.") // Cannot contain more that one space after another one
+            regexp = "^([a-zA-Z0-9]+ )*[a-zA-Z0-9]+$",
+            message =
+                    "You can only enter letters or numbers. At least 1 character long. Cannot begin or end with a space. No more than one space between words")
     private String username;
 
     @NotNull
