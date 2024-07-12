@@ -99,12 +99,8 @@ public class User implements UserDetails {
 
     public User() {}
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public long getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -114,6 +110,15 @@ public class User implements UserDetails {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
@@ -136,20 +141,6 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.email;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public LocalDate getDateOfBirth() {
@@ -176,7 +167,23 @@ public class User implements UserDetails {
         this.country = country;
     }
 
-    public long getId() {
-        return id;
+    public List<Role> getRoles() {
+        return roles;
     }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.roles;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+
 }
