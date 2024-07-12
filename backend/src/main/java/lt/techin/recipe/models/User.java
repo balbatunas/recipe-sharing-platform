@@ -15,14 +15,6 @@ import java.util.List;
 @Table(name = "Users")
 public class User implements UserDetails {
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "Users_Roles",
-            joinColumns = @JoinColumn(name = "User_id"),
-            inverseJoinColumns = @JoinColumn(name = "Role_id"))
-    //    @NotNull
-    private List<Role> roles;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -70,6 +62,14 @@ public class User implements UserDetails {
     @NotNull
     private boolean isPrivacyPolicyAccepted;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "Users_Roles",
+            joinColumns = @JoinColumn(name = "User_id"),
+            inverseJoinColumns = @JoinColumn(name = "Role_id"))
+    //    @NotNull
+    private List<Role> roles;
+
     public User(
             String firstName,
             String lastName,
@@ -109,10 +109,6 @@ public class User implements UserDetails {
         this.firstName = firstName;
     }
 
-    //    public String getUsername() {
-    //        return username;
-    //    }
-
     public String getEmail() {
         return email;
     }
@@ -121,17 +117,17 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles;
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.roles;
     }
 
     @Override
