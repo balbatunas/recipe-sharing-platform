@@ -23,29 +23,6 @@ public class User implements UserDetails {
     //    @NotNull
     private List<Role> roles;
 
-    public User(
-            String firstName,
-            String lastName,
-            String username,
-            String email,
-            String password,
-            LocalDate dateOfBirth,
-            String gender,
-            String country,
-            boolean isPrivacyPolicyAccepted) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
-        this.country = country;
-        this.isPrivacyPolicyAccepted = isPrivacyPolicyAccepted;
-    }
-
-    public User() {}
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -79,7 +56,6 @@ public class User implements UserDetails {
     //                    ("Must contain at least one uppercase, lowercase letter, number, and any of these special
     // symbols: !@#$%^&*"))
     private String password;
-
     //    @Min(1900)
     //    @Max(2011)
     @NotNull
@@ -93,6 +69,29 @@ public class User implements UserDetails {
 
     @NotNull
     private boolean isPrivacyPolicyAccepted;
+
+    public User(
+            String firstName,
+            String lastName,
+            String username,
+            String email,
+            String password,
+            LocalDate dateOfBirth,
+            String gender,
+            String country,
+            boolean isPrivacyPolicyAccepted) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.country = country;
+        this.isPrivacyPolicyAccepted = isPrivacyPolicyAccepted;
+    }
+
+    public User() {}
 
     public String getLastName() {
         return lastName;
@@ -114,10 +113,6 @@ public class User implements UserDetails {
     //        return username;
     //    }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -135,13 +130,17 @@ public class User implements UserDetails {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String getUsername() {
         return this.email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public LocalDate getDateOfBirth() {
