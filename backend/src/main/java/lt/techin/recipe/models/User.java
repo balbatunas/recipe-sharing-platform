@@ -1,6 +1,7 @@
 package lt.techin.recipe.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -42,8 +43,9 @@ public class User implements UserDetails {
                     "You can only enter letters or numbers. At least 1 character long. Cannot begin or end with a space. No more than one space between words")
     private String username;
 
-    @NotNull
-    @Length(min = 5, max = 200)
+    @NotEmpty(message = "Cannot be null or empty")
+    @Length(min = 5, max = 200, message = "Minimum length 5 characters, maximum length 200 characters")
+    @Email(message = "Does not match correct email format")
     private String email;
 
     @NotNull
