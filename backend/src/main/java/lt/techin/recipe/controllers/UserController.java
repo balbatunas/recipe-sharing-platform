@@ -31,12 +31,11 @@ public class UserController {
 
         if (this.userRepository.existsByEmail(user.getEmail())) {
             HashMap<String, String> response = new HashMap<>();
-            response.put("message", "This user " + user.getUsername() + " already exist in this DB");
+            response.put("message", "The user " + user.getUsername() + " already exists in the database");
             return ResponseEntity.status(400).body(response);
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
         return ResponseEntity.status(201).body(this.userRepository.save(user));
     }
 }
