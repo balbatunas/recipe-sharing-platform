@@ -1,6 +1,7 @@
 package lt.techin.recipe.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
@@ -19,9 +20,11 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotNull
-    @Length(min = 2, max = 135)
-    @Pattern(regexp = "^[A-Z][a-zA-Z]+$", message = ("You must enter only letters. First letter must be capital one"))
+    @NotEmpty(message = "Cannot be null or empty")
+    @Length(max = 135, message = "Maximum length is 135 characters")
+    @Pattern(
+            regexp = "^[A-Z][a-zA-Z]+$",
+            message = ("You can only enter letters. First letter must be capital. At least 2 characters long."))
     private String firstName;
 
     @Length(min = 2, max = 100)
