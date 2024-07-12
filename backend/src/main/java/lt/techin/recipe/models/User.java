@@ -56,9 +56,7 @@ public class User implements UserDetails {
                     "Must contain at least one uppercase letter, one lowercase letter, one number, and any one of these special symbols: !@#$%^&*")
     private String password;
 
-    //    @Min(1900)
-    //    @Max(2011)
-    @NotNull
+    @NotNull(message = "Cannot be null or empty")
     private LocalDate dateOfBirth;
 
     @Length(min = 4, max = 6)
