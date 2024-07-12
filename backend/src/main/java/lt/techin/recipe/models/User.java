@@ -41,7 +41,7 @@ public class User implements UserDetails {
             regexp = "^([a-zA-Z0-9]+ )*[a-zA-Z0-9]+$",
             message =
                     "You can only enter letters or numbers. At least 1 character long. Cannot begin or end with a space. No more than one space between words")
-    private String username;
+    private String displayName;
 
     @NotEmpty(message = "Cannot be null or empty")
     @Length(min = 5, max = 200, message = "Minimum length 5 characters, maximum length 200 characters")
@@ -79,7 +79,7 @@ public class User implements UserDetails {
     public User(
             String firstName,
             String lastName,
-            String username,
+            String displayName,
             String email,
             String password,
             LocalDate dateOfBirth,
@@ -88,7 +88,7 @@ public class User implements UserDetails {
             boolean isPrivacyPolicyAccepted) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.username = username;
+        this.displayName = displayName;
         this.email = email;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
@@ -113,6 +113,13 @@ public class User implements UserDetails {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getDisplayName() {
+        return displayName;
     }
 
     public String getEmail() {
