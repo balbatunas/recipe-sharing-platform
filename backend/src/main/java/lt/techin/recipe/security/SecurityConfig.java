@@ -22,8 +22,8 @@ public class SecurityConfig {
                         .anyRequest()
                         .authenticated())
                 .httpBasic(Customizer.withDefaults())
-                // isjungiam CSRF tik DEVELOP tiklsams
 
+                // isjungiam CSRF tik DEVELOP tikslams
                 .csrf(csrf -> csrf.disable());
 
         return http.build();
