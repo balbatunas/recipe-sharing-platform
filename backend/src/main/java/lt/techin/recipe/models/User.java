@@ -48,14 +48,14 @@ public class User implements UserDetails {
     @Email(message = "Does not match correct email format")
     private String email;
 
-    @NotNull
-    @Length(min = 8, max = 255)
-    //    @Pattern(
-    //            regexp = "(?=.*)(?=.*[a-z])(?=.*[A-Z])(?=.*)",
-    //            message =
-    //                    ("Must contain at least one uppercase, lowercase letter, number, and any of these special
-    // symbols: !@#$%^&*"))
+    @NotEmpty(message = "Cannot be null or empty")
+    @Length(min = 8, max = 255, message = "Minimum length 8 characters, maximum length 255 characters")
+    @Pattern(
+            regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*]).+$",
+            message =
+                    "Must contain at least one uppercase letter, one lowercase letter, one number, and any one of these special symbols: !@#$%^&*")
     private String password;
+
     //    @Min(1900)
     //    @Max(2011)
     @NotNull
