@@ -15,28 +15,28 @@ public class Role implements GrantedAuthority {
 
     @NotNull
     @Length(min = 1, max = 100)
-    private String roleName;
+    private String name;
+
+    public Role(String name) {
+        this.name = name;
+    }
+
+    public Role() {}
 
     public int getId() {
         return id;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getName() {
+        return name;
     }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
-    public Role(String role_name) {
-        this.roleName = role_name;
-    }
-
-    public Role() {}
 
     @Override
     public String getAuthority() {
-        return this.roleName;
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
