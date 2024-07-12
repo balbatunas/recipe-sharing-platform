@@ -25,6 +25,9 @@ export default function Register() {
           id="first-name"
           className="form-control"
           autoComplete="given-name"
+          maxLength="135"
+          minLength="2"
+          pattern="[A-Z][a-zA-Z- ]+"
           {...register("firstName", { required: true })}
         />
         {errors.firstName?.type == "required" && (
@@ -44,6 +47,9 @@ export default function Register() {
           id="last-name"
           className="form-control"
           autoComplete="family-name"
+          maxLength="135"
+          minLength="2"
+          pattern="[A-Z][a-zA-Z- ]+"
           {...register("lastName", { required: true })}
         />
         {errors.lastName?.type === "required" && (
@@ -63,6 +69,9 @@ export default function Register() {
           id="username"
           className="form-control"
           autoComplete="username"
+          minLength="1"
+          maxLength="255"
+          pattern="^[a-zA-z0-9][a-zA-Z0-9 ]*$"
           {...register("username", { required: true })}
         />
         {errors.username?.type === "required" && (
@@ -82,6 +91,8 @@ export default function Register() {
           id="email"
           className="form-control"
           autoComplete="email"
+          minLength="5"
+          maxLength="200"
           {...register("email", { required: true })}
         />
         {errors.email?.type === "required" && (
@@ -101,6 +112,9 @@ export default function Register() {
           type="password"
           id="password"
           className="form-control"
+          minLength="5"
+          maxLength="255"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_))^[^ ]+$"
           {...register("password", { required: true })}
         />
         {errors.password?.type === "required" && (
