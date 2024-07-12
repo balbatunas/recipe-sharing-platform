@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 
 @CrossOrigin("http://localhost:5173")
@@ -28,10 +30,17 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<?> postUser(@Valid @RequestBody User user) {
-
         if (this.userRepository.existsByEmail(user.getEmail())) {
             HashMap<String, String> response = new HashMap<>();
             response.put("message", "The user " + user.getUsername() + " already exists in the database");
+            return ResponseEntity.status(400).body(response);
+        }
+
+        // Naudojame if sakini, kadangi nera tokios anotacijos
+        if (user.getDateOfBirth().isBefore(LocalDate.of(1900, 1, 1))
+                || ChronoUnit.YEARS.between(user.getDateOfBirth(), LocalDate.now()) < 13) {
+            HashMap<String, String> response = new HashMap<>();
+            response.put("dateOfBirth", "Cannot be older than the year 1900, or younger than 13 years old");
             return ResponseEntity.status(400).body(response);
         }
 
