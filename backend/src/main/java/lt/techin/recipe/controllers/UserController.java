@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 
-@CrossOrigin
+@CrossOrigin("http://localhost:5173")
 @RestController
 public class UserController {
 
