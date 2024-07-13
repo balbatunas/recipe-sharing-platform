@@ -59,7 +59,7 @@ public class User implements UserDetails {
     @NotNull(message = "Cannot be null or empty")
     private LocalDate dateOfBirth;
 
-    @Length(min = 4, max = 6)
+    @Pattern(regexp = "^(Female|Male|Other)$", message = "Must be Female, Male, or Other")
     private String gender;
 
     @NotNull
@@ -184,6 +184,4 @@ public class User implements UserDetails {
     public String getUsername() {
         return this.email;
     }
-
-
 }
