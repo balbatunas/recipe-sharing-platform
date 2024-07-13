@@ -1,5 +1,6 @@
 package lt.techin.recipe.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
@@ -27,11 +28,13 @@ public class Role implements GrantedAuthority {
         return id;
     }
 
+    @JsonIgnore
     public String getName() {
         return name;
     }
 
     @Override
+    @JsonIgnore
     public String getAuthority() {
         return this.name;
     }
