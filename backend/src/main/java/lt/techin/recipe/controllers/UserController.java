@@ -32,13 +32,13 @@ public class UserController {
     public ResponseEntity<?> postUser(@Valid @RequestBody User user) {
         HashMap<String, String> response = new HashMap<>();
 
-        if (this.userRepository.existsByEmail(user.getEmail())) {
-            response.put("email", "Already exists");
+        if (this.userRepository.existsByDisplayName(user.getDisplayName())) {
+            response.put("displayName", "Already exists");
             return ResponseEntity.status(400).body(response);
         }
 
-        if (this.userRepository.existsByDisplayName(user.getDisplayName())) {
-            response.put("displayName", "Already exists");
+        if (this.userRepository.existsByEmail(user.getEmail())) {
+            response.put("email", "Already exists");
             return ResponseEntity.status(400).body(response);
         }
 
