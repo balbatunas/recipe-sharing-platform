@@ -65,9 +65,6 @@ public class User implements UserDetails {
     @NotNull
     private String country;
 
-    @NotNull
-    private boolean isPrivacyPolicyAccepted;
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "Users_roles",
