@@ -33,7 +33,7 @@ public class UserController {
         HashMap<String, String> response = new HashMap<>();
 
         if (this.userRepository.existsByEmail(user.getEmail())) {
-            response.put("message", "The user " + user.getUsername() + " already exists in the database");
+            response.put("email", "Already exists");
             return ResponseEntity.status(400).body(response);
         }
 
