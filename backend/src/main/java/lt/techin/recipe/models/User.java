@@ -70,7 +70,7 @@ public class User implements UserDetails {
             name = "Users_roles",
             joinColumns = @JoinColumn(name = "User_id"),
             inverseJoinColumns = @JoinColumn(name = "Role_id"))
-    //    @NotNull
+    @NotEmpty(message = "Cannot be null or empty")
     private List<Role> roles;
 
     public User(
