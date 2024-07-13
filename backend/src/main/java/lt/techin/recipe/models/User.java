@@ -65,6 +65,7 @@ public class User implements UserDetails {
     @Pattern(regexp = "^(Female|Male|Other)$", message = "Must be Female, Male, or Other")
     private String gender;
 
+    // Perhaps add a whole list of 195 countries, maybe even regex?
     @NotEmpty(message = "Cannot be null or empty")
     private String country;
 
