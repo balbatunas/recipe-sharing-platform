@@ -85,7 +85,7 @@ public class User implements UserDetails {
             LocalDate dateOfBirth,
             String gender,
             String country,
-            boolean isPrivacyPolicyAccepted) {
+            List<Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.displayName = displayName;
@@ -94,7 +94,7 @@ public class User implements UserDetails {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.country = country;
-        this.isPrivacyPolicyAccepted = isPrivacyPolicyAccepted;
+        this.roles = roles;
     }
 
     public User() {}
