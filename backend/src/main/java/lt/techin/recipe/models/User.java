@@ -25,14 +25,14 @@ public class User implements UserDetails {
     @Length(max = 135, message = "Maximum length is 135 characters")
     @Pattern(
             regexp = "^[A-Z][a-zA-Z]+$",
-            message = ("You can only enter letters. First letter must be capital. At least 2 characters long"))
+            message = "You can only enter letters. First letter must be capital. At least 2 characters long")
     private String firstName;
 
     @NotEmpty(message = "Cannot be null or empty")
     @Length(max = 100, message = "Maximum length is 100 characters")
     @Pattern(
             regexp = "^[A-Z][a-zA-Z]+$",
-            message = ("You can only enter letters. First letter must be capital. At least 2 characters long"))
+            message = "You can only enter letters. First letter must be capital. At least 2 characters long")
     private String lastName;
 
     @NotEmpty(message = "Cannot be null or empty")
