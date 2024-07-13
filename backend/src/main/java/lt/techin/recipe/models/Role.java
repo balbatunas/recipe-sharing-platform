@@ -33,13 +33,13 @@ public class Role implements GrantedAuthority {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     @JsonIgnore
     public String getAuthority() {
         return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
