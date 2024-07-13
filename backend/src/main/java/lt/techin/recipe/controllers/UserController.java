@@ -37,8 +37,8 @@ public class UserController {
             return ResponseEntity.status(400).body(response);
         }
 
-        if (this.userRepository.existsByUsername(user.getUsername())) {
-            response.put("username", "Already exists");
+        if (this.userRepository.existsByDisplayName(user.getDisplayName())) {
+            response.put("displayName", "Already exists");
             return ResponseEntity.status(400).body(response);
         }
 
