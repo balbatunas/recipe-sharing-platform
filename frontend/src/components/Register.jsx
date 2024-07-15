@@ -29,7 +29,7 @@ export default function Register() {
             required: true,
             maxLength: 135,
             minLength: 2,
-            pattern: /^[A-Z][a-zA-Z- ]+$/i,
+            pattern: /^[A-Z][a-zA-Z- ]+$/,
           })}
         />
         {errors.firstName?.type == "required" && (
@@ -62,7 +62,7 @@ export default function Register() {
             required: true,
             maxLength: 100,
             minLength: 2,
-            pattern: /^[A-Z]*$/i,
+            pattern: /^[A-Z][a-zA-Z- ]*$/,
             // pattern: /^[A-Z][a-zA-Z- ]+$/i,
           })}
         />
@@ -162,7 +162,8 @@ export default function Register() {
             required: true,
             maxLength: 255,
             minLength: 8,
-            pattern: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_))^[^ ]+$/i,
+            pattern:
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&#]{8,}$/,
           })}
         />
         {errors.password?.type === "required" && (
