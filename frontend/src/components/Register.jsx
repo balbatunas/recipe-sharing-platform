@@ -25,13 +25,24 @@ export default function Register() {
           id="first-name"
           className="form-control"
           autoComplete="given-name"
-          maxLength="135"
-          minLength="2"
-          pattern="[A-Z][a-zA-Z- ]+"
-          {...register("firstName", { required: true })}
+          {...register("firstName", {
+            required: true,
+            maxLength: 135,
+            minLength: 2,
+            pattern: /^[A-Z][a-zA-Z- ]+$/i,
+          })}
         />
         {errors.firstName?.type == "required" && (
           <div className="text-danger">This field is required</div>
+        )}
+        {errors.firstName?.type === "minLength" && (
+          <p role="alert">Minimum symbols: 2</p>
+        )}
+        {errors.firstName?.type === "maxLength" && (
+          <p role="alert">Maximum symbols: 135</p>
+        )}
+        {errors.firstName?.type === "pattern" && (
+          <p role="alert">Only letters, First letter must be uppercase</p>
         )}
       </div>
 
@@ -47,13 +58,25 @@ export default function Register() {
           id="last-name"
           className="form-control"
           autoComplete="family-name"
-          maxLength="135"
-          minLength="2"
-          pattern="[A-Z][a-zA-Z- ]+"
-          {...register("lastName", { required: true })}
+          {...register("lastName", {
+            required: true,
+            maxLength: 100,
+            minLength: 2,
+            pattern: /^[A-Z]*$/i,
+            // pattern: /^[A-Z][a-zA-Z- ]+$/i,
+          })}
         />
         {errors.lastName?.type === "required" && (
           <div className="text-danger">This field is required</div>
+        )}
+        {errors.lastName?.type === "minLength" && (
+          <p role="alert">Minimum symbols: 2</p>
+        )}
+        {errors.lastName?.type === "maxLength" && (
+          <p role="alert">Maximum symbols: 100</p>
+        )}
+        {errors.lastName?.type === "pattern" && (
+          <p role="alert">Only letters, First letter must be uppercase</p>
         )}
       </div>
 
@@ -69,13 +92,28 @@ export default function Register() {
           id="username"
           className="form-control"
           autoComplete="username"
-          minLength="1"
-          maxLength="255"
-          pattern="^[a-zA-z0-9][a-zA-Z0-9 ]*$"
-          {...register("username", { required: true })}
+          {...register("username", {
+            required: true,
+            maxLength: 255,
+            minLength: 1,
+            pattern: /^[a-zA-z0-9][a-zA-Z0-9 ]*$/i,
+          })}
         />
         {errors.username?.type === "required" && (
           <div className="text-danger">This field is required</div>
+        )}
+        {errors.username?.type === "minLength" && (
+          <p role="alert">Minimum symbols: 1</p>
+        )}
+        {errors.username?.type === "maxLength" && (
+          <p role="alert">Maximum symbols: 255</p>
+        )}
+        {errors.username?.type === "pattern" && (
+          <p role="alert">
+            Must contain only letters, numbers and spaces, Cannot contain more
+            that one space after another one, First character must be letter or
+            number
+          </p>
         )}
       </div>
 
@@ -91,12 +129,20 @@ export default function Register() {
           id="email"
           className="form-control"
           autoComplete="email"
-          minLength="5"
-          maxLength="200"
-          {...register("email", { required: true })}
+          {...register("email", {
+            required: true,
+            maxLength: 200,
+            minLength: 5,
+          })}
         />
         {errors.email?.type === "required" && (
           <div className="text-danger">This field is required</div>
+        )}
+        {errors.email?.type === "minLength" && (
+          <p role="alert">Minimum symbols: 5</p>
+        )}
+        {errors.email?.type === "maxLength" && (
+          <p role="alert">Maximum symbols: 200</p>
         )}
       </div>
 
@@ -112,13 +158,27 @@ export default function Register() {
           type="password"
           id="password"
           className="form-control"
-          minLength="5"
-          maxLength="255"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_))^[^ ]+$"
-          {...register("password", { required: true })}
+          {...register("password", {
+            required: true,
+            maxLength: 255,
+            minLength: 8,
+            pattern: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_))^[^ ]+$/i,
+          })}
         />
         {errors.password?.type === "required" && (
           <div className="text-danger">This field is required</div>
+        )}
+        {errors.password?.type === "minLength" && (
+          <p role="alert">Minimum symbols: 8</p>
+        )}
+        {errors.password?.type === "maxLength" && (
+          <p role="alert">Maximum symbols: 255</p>
+        )}
+        {errors.password?.type === "pattern" && (
+          <p role="alert">
+            Must contain at least one uppercase, lowercase letter, number, and
+            any of these special symbols: !@#$%^&*
+          </p>
         )}
       </div>
 
@@ -149,7 +209,11 @@ export default function Register() {
             id="female"
             className="form-check-input"
             value="Female"
-            {...register("gender")}
+            {...register("gender", {
+              required: true,
+              maxLength: 6,
+              minLength: 4,
+            })}
           />
           <label
             htmlFor="female"
