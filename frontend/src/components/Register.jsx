@@ -82,33 +82,33 @@ export default function Register() {
 
       <div className="mb-3">
         <label
-          htmlFor="username"
+          htmlFor="displayName"
           className="form-label"
         >
-          Username
+          Display Name
         </label>
         <input
           type="text"
-          id="username"
+          id="displayName"
           className="form-control"
-          autoComplete="username"
-          {...register("username", {
+          autoComplete="displayName"
+          {...register("displayName", {
             required: true,
             maxLength: 255,
             minLength: 1,
             pattern: /^[a-zA-z0-9][a-zA-Z0-9 ]*$/i,
           })}
         />
-        {errors.username?.type === "required" && (
+        {errors.displayName?.type === "required" && (
           <div className="text-danger">This field is required</div>
         )}
-        {errors.username?.type === "minLength" && (
+        {errors.displayName?.type === "minLength" && (
           <p role="alert">Minimum symbols: 1</p>
         )}
-        {errors.username?.type === "maxLength" && (
+        {errors.displayName?.type === "maxLength" && (
           <p role="alert">Maximum symbols: 255</p>
         )}
-        {errors.username?.type === "pattern" && (
+        {errors.displayName?.type === "pattern" && (
           <p role="alert">
             Must contain only letters, numbers and spaces, Cannot contain more
             that one space after another one, First character must be letter or
