@@ -36,16 +36,16 @@ export default function Register() {
           <div className="text-danger">This field is required</div>
         )}
         {errors.firstName?.type === "minLength" && (
-          <p role="alert">Minimum symbols: 2</p>
+          <div role="alert">Minimum symbols: 2</div>
         )}
         {errors.firstName?.type === "maxLength" && (
-          <p role="alert">Maximum symbols: 135</p>
+          <div role="alert">Maximum symbols: 135</div>
         )}
         {errors.firstName?.type === "pattern" && (
-          <p role="alert">
+          <div role="alert">
             You can only enter letters. First letter must be capital. At least 2
             characters long
-          </p>
+          </div>
         )}
       </div>
 
@@ -73,16 +73,16 @@ export default function Register() {
           <div className="text-danger">This field is required</div>
         )}
         {errors.lastName?.type === "minLength" && (
-          <p role="alert">Minimum symbols: 2</p>
+          <div role="alert">Minimum symbols: 2</div>
         )}
         {errors.lastName?.type === "maxLength" && (
-          <p role="alert">Maximum symbols: 100</p>
+          <div role="alert">Maximum symbols: 100</div>
         )}
         {errors.lastName?.type === "pattern" && (
-          <p role="alert">
+          <div role="alert">
             You can only enter letters. First letter must be capital. At least 2
             characters long
-          </p>
+          </div>
         )}
       </div>
 
@@ -111,16 +111,16 @@ export default function Register() {
           <div className="text-danger">This field is required</div>
         )}
         {errors.displayName?.type === "minLength" && (
-          <p role="alert">Minimum symbols: 1</p>
+          <div role="alert">Minimum symbols: 1</div>
         )}
         {errors.displayName?.type === "maxLength" && (
-          <p role="alert">Maximum symbols: 255</p>
+          <div role="alert">Maximum symbols: 255</div>
         )}
         {errors.displayName?.type === "pattern" && (
-          <p role="alert">
+          <div role="alert">
             You can only enter letters or numbers, No more than one space
             between words, Display name can't contain inappropriate language
-          </p>
+          </div>
         )}
       </div>
 
@@ -146,10 +146,10 @@ export default function Register() {
           <div className="text-danger">This field is required</div>
         )}
         {errors.email?.type === "minLength" && (
-          <p role="alert">Minimum symbols: 5</p>
+          <div role="alert">Minimum symbols: 5</div>
         )}
         {errors.email?.type === "maxLength" && (
-          <p role="alert">Maximum symbols: 200</p>
+          <div role="alert">Maximum symbols: 200</div>
         )}
       </div>
 
@@ -177,16 +177,16 @@ export default function Register() {
           <div className="text-danger">This field is required</div>
         )}
         {errors.password?.type === "minLength" && (
-          <p role="alert">Minimum symbols: 8</p>
+          <div role="alert">Minimum symbols: 8</div>
         )}
         {errors.password?.type === "maxLength" && (
-          <p role="alert">Maximum symbols: 255</p>
+          <div role="alert">Maximum symbols: 255</div>
         )}
         {errors.password?.type === "pattern" && (
-          <p role="alert">
+          <div role="alert">
             Must contain at least one uppercase, lowercase letter, number, and
             any of these special symbols: !@#$%^&*
-          </p>
+          </div>
         )}
       </div>
 
