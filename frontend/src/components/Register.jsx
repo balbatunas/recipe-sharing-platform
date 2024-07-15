@@ -104,7 +104,7 @@ export default function Register() {
             minLength: 1,
             // pattern: /^[a-zA-z0-9][a-zA-Z0-9 ]*$/i,
             pattern:
-              /^(?!.*(?:fuck|shit|damn|bitch|crap|asshole|bastard|dick|piss|cunt))[a-zA-Z0-9][a-zA-Z0-9 ]*$/i,
+              /^(?!.*(?:fuck|shit|damn|bitch|crap|asshole|bastard|dick|piss|cunt))([a-zA-Z0-9]+\s)*[a-zA-Z0-9]+$/i,
           })}
         />
         {errors.displayName?.type === "required" && (
@@ -119,7 +119,8 @@ export default function Register() {
         {errors.displayName?.type === "pattern" && (
           <div className="text-danger">
             You can only enter letters or numbers, No more than one space
-            between words, Display name can't contain inappropriate language
+            between words, Display name can't contain inappropriate language, No
+            more than one space between words
           </div>
         )}
       </div>
