@@ -102,7 +102,9 @@ export default function Register() {
             required: true,
             maxLength: 255,
             minLength: 1,
-            pattern: /^[a-zA-z0-9][a-zA-Z0-9 ]*$/i,
+            // pattern: /^[a-zA-z0-9][a-zA-Z0-9 ]*$/i,
+            pattern:
+              /^(?!.*(?:fuck|shit|damn|bitch|crap|asshole|bastard|dick|piss|cunt))[a-zA-Z0-9][a-zA-Z0-9 ]*$/i,
           })}
         />
         {errors.displayName?.type === "required" && (
@@ -116,9 +118,8 @@ export default function Register() {
         )}
         {errors.displayName?.type === "pattern" && (
           <p role="alert">
-            Must contain only letters, numbers and spaces, Cannot contain more
-            that one space after another one, First character must be letter or
-            number
+            You can only enter letters or numbers, No more than one space
+            between words, Display name can't contain inappropriate language
           </p>
         )}
       </div>
