@@ -42,7 +42,10 @@ export default function Register() {
           <p role="alert">Maximum symbols: 135</p>
         )}
         {errors.firstName?.type === "pattern" && (
-          <p role="alert">Only letters, First letter must be uppercase</p>
+          <p role="alert">
+            You can only enter letters. First letter must be capital. At least 2
+            characters long
+          </p>
         )}
       </div>
 
@@ -62,7 +65,7 @@ export default function Register() {
             required: true,
             maxLength: 100,
             minLength: 2,
-            pattern: /^[A-Z][a-zA-Z- ]*$/,
+            pattern: /^[A-Z][a-zA-Z]*$/,
             // pattern: /^[A-Z][a-zA-Z- ]+$/i,
           })}
         />
@@ -76,7 +79,10 @@ export default function Register() {
           <p role="alert">Maximum symbols: 100</p>
         )}
         {errors.lastName?.type === "pattern" && (
-          <p role="alert">Only letters, First letter must be uppercase</p>
+          <p role="alert">
+            You can only enter letters. First letter must be capital. At least 2
+            characters long
+          </p>
         )}
       </div>
 
