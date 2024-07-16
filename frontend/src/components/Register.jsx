@@ -145,6 +145,7 @@ export default function Register() {
             required: true,
             maxLength: 200,
             minLength: 5,
+            pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/, // Pattern to allow only lowercase letters and valid email characters
           })}
         />
         {errors.email?.type === "required" && (
@@ -155,6 +156,11 @@ export default function Register() {
         )}
         {errors.email?.type === "maxLength" && (
           <div className="text-danger">Maximum symbols: 200</div>
+        )}
+        {errors.email?.type === "pattern" && (
+          <div className="text-danger">
+            You can only enter lowercase letters
+          </div>
         )}
       </div>
 
