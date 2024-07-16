@@ -238,12 +238,24 @@ export default function Register() {
         <input
           type="date"
           id="birth"
-          className="form-control"
           dateFormat="yyyy-MM-dd"
-          {...register("birth", { required: true })}
+          className="form-control"
+          min="1900-01-01"
+          max="2011-07-16"
+          {...register("birth", {
+            required: true,
+            // max: 2011,
+            // min: 1900,
+          })}
         />
         {errors.birth?.type === "required" && (
           <div className="text-danger">This field is required</div>
+        )}
+        {errors.birth?.type === "max" && (
+          <div className="text-danger">Must be at least 13 years old</div>
+        )}
+        {errors.birth?.type === "min" && (
+          <div className="text-danger">Cannot be older than 1900 year</div>
         )}
       </div>
 
