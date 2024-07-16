@@ -171,11 +171,11 @@ export default function Register() {
         <label
           htmlFor="password"
           className="form-label"
-          autoComplete="new-password"
         >
           Password
         </label>
         <input
+          autoComplete="new-password"
           type="password"
           id="password"
           className="form-control"
@@ -208,11 +208,11 @@ export default function Register() {
         <label
           htmlFor="repeat-password"
           className="form-label"
-          autoComplete="new-password"
         >
           Repeat password
         </label>
         <input
+          autoComplete="new-password"
           type="password"
           id="repeat-password"
           className="form-control"
@@ -239,6 +239,7 @@ export default function Register() {
           type="date"
           id="birth"
           className="form-control"
+          dateFormat="yyyy-MM-dd"
           {...register("birth", { required: true })}
         />
         {errors.birth?.type === "required" && (
