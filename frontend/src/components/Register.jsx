@@ -228,21 +228,23 @@ export default function Register() {
           <div className="text-danger">{errors.repeatPassword.message}</div>
         )}
       </div>
-      <div className="form-control">
+      <div className="mb-3">
         <label
           htmlFor="birth"
-          className="form-control"
-        ></label>
-        Date of birth
+          className="form-label"
+        >
+          Date of birth
+        </label>
         <input
           type="date"
           id="birth"
-          className="date-of-birth"
-          value="Birth"
-          {...register("birth")}
+          className="form-control"
+          {...register("birth", { required: true })}
         />
+        {errors.birth?.type === "required" && (
+          <div className="text-danger">This field is required</div>
+        )}
       </div>
-      <br />
 
       <fieldset className="mb-3">
         <legend>Pick your gender</legend>
