@@ -4,9 +4,12 @@ export default function Register() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
+
+  const password = watch("password");
 
   return (
     <form
@@ -196,7 +199,7 @@ export default function Register() {
         {errors.password?.type === "pattern" && (
           <div className="text-danger">
             Must contain at least one uppercase, lowercase letter, number, and
-            any of these special symbols: !@#$%^&*
+            any of these special symbols: !@$%^&*
           </div>
         )}
       </div>
@@ -213,10 +216,16 @@ export default function Register() {
           type="password"
           id="repeat-password"
           className="form-control"
-          {...register("repeatPassword", { required: true })}
+          {...register("repeatPassword", {
+            required: true,
+            validate: (value) => value === password || "Passwords do not match",
+          })}
         />
         {errors.repeatPassword?.type == "required" && (
           <div className="text-danger">This field is required</div>
+        )}
+        {errors.repeatPassword?.type === "validate" && (
+          <div className="text-danger">{errors.repeatPassword.message}</div>
         )}
       </div>
 
