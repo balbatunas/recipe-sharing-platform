@@ -66,7 +66,6 @@ export default function Register() {
             maxLength: 100,
             minLength: 2,
             pattern: /^[A-Z][a-zA-Z]*$/,
-            // pattern: /^[A-Z][a-zA-Z- ]+$/i,
           })}
         />
         {errors.lastName?.type === "required" && (
@@ -102,9 +101,15 @@ export default function Register() {
             required: true,
             maxLength: 255,
             minLength: 1,
-            // pattern: /^[a-zA-z0-9][a-zA-Z0-9 ]*$/i,
-            pattern:
-              /^(?!.*(?:fuck|shit|damn|bitch|crap|asshole|bastard|dick|piss|cunt))([a-zA-Z0-9]+\s)*[a-zA-Z0-9]+$/i,
+            validate: {
+              pattern1: (value) =>
+                /^[a-zA-Z0-9]+(\s[a-zA-Z0-9]+)*$/i.test(value) ||
+                "You can only enter letters or numbers, no more than one space between words",
+              pattern2: (value) =>
+                !/(?:fuck|shit|damn|bitch|crap|asshole|bastard|dick|piss|cunt)/i.test(
+                  value
+                ) || "Display name can't contain inappropriate language",
+            },
           })}
         />
         {errors.displayName?.type === "required" && (
@@ -116,12 +121,11 @@ export default function Register() {
         {errors.displayName?.type === "maxLength" && (
           <div className="text-danger">Maximum symbols: 255</div>
         )}
-        {errors.displayName?.type === "pattern" && (
-          <div className="text-danger">
-            You can only enter letters or numbers, No more than one space
-            between words, Display name can't contain inappropriate language, No
-            more than one space between words
-          </div>
+        {errors.displayName?.type === "pattern1" && (
+          <div className="text-danger">{errors.displayName.message}</div>
+        )}
+        {errors.displayName?.type === "pattern2" && (
+          <div className="text-danger">{errors.displayName.message}</div>
         )}
       </div>
 
