@@ -228,6 +228,21 @@ export default function Register() {
           <div className="text-danger">{errors.repeatPassword.message}</div>
         )}
       </div>
+      <div className="form-control">
+        <label
+          htmlFor="birth"
+          className="form-control"
+        ></label>
+        Date of birth
+        <input
+          type="date"
+          id="birth"
+          className="date-of-birth"
+          value="Birth"
+          {...register("birth")}
+        />
+      </div>
+      <br />
 
       <fieldset className="mb-3">
         <legend>Pick your gender</legend>
