@@ -259,18 +259,18 @@ export default function Register() {
       </div>
       <div className="mb-3">
         <label
-          htmlFor="birth"
+          htmlFor="dateOfBirth"
           className="form-label"
         >
           Date of birth
         </label>
         <input
           type="date"
-          id="birth"
+          id="dateOfBirth"
           className="form-control"
           min="1900-01-01"
           max="2011-07-16"
-          {...register("birth", {
+          {...register("dateOfBirth", {
             required: true,
           })}
         />
