@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
@@ -76,7 +76,7 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "User_id"),
             inverseJoinColumns = @JoinColumn(name = "Role_id"))
     @NotEmpty(message = "Cannot be null or empty")
-    private List<Role> roles;
+    private Set<Role> roles;
 
     public User(
             String firstName,
@@ -87,7 +87,7 @@ public class User implements UserDetails {
             LocalDate dateOfBirth,
             String gender,
             String country,
-            List<Role> roles) {
+            Set<Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.displayName = displayName;
@@ -169,11 +169,11 @@ public class User implements UserDetails {
         this.country = country;
     }
 
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
