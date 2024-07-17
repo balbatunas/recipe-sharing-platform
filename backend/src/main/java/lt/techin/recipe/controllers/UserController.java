@@ -1,6 +1,8 @@
 package lt.techin.recipe.controllers;
 
+import com.sanctionco.jmail.JMail;
 import jakarta.validation.Valid;
+import lt.techin.recipe.models.Role;
 import lt.techin.recipe.models.User;
 import lt.techin.recipe.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin("http://localhost:5173/**")
 @RestController
 public class UserController {
 
@@ -37,6 +39,11 @@ public class UserController {
             return ResponseEntity.status(400).body(response);
         }
 
+        if (JMail.strictValidator().isInvalid(user.getEmail())) {
+            response.put("email", "Does not match correct email format");
+            return ResponseEntity.status(400).body(response);
+        }
+
         if (this.userRepository.existsByEmail(user.getEmail())) {
             response.put("email", "Already exists");
             return ResponseEntity.status(400).body(response);
@@ -47,6 +54,13 @@ public class UserController {
                 || ChronoUnit.YEARS.between(user.getDateOfBirth(), LocalDate.now()) < 13) {
             response.put("dateOfBirth", "Cannot be older than the year 1900, or younger than 13 years old");
             return ResponseEntity.status(400).body(response);
+        }
+
+        for (Role role : user.getRoles()) {
+            if (role.getId() == null) {
+                response.put("id", "Cannot be null");
+                return ResponseEntity.status(400).body(response);
+            }
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
