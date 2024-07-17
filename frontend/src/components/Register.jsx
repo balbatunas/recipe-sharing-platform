@@ -5,9 +5,38 @@ export default function Register() {
     register,
     handleSubmit,
     watch,
+    setError,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    try {
+      const response = await fetch("http://localhost:8080/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Registration successful:", result);
+      } else {
+        const errorData = await response.json();
+        if ((response.statusCode = 400)) {
+          setError("email", {
+            type: "server",
+            message: "This email already exists",
+          });
+        }
+        console.error("Registration error:", errorData);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
+  };
 
   const password = watch("password");
 
@@ -238,14 +267,11 @@ export default function Register() {
         <input
           type="date"
           id="birth"
-          dateFormat="yyyy-MM-dd"
           className="form-control"
           min="1900-01-01"
           max="2011-07-16"
           {...register("birth", {
             required: true,
-            // max: 2011,
-            // min: 1900,
           })}
         />
         {errors.birth?.type === "required" && (
