@@ -25,14 +25,14 @@ public class User implements UserDetails {
     @Length(max = 135, message = "Maximum length is 135 characters")
     @Pattern(
             regexp = "^[A-Z][a-zA-Z]+$",
-            message = "You can only enter letters. First letter must be capital. At least 2 characters long")
+            message = "You can only enter English letters. First letter must be capital. At least 2 characters long")
     private String firstName;
 
     @NotEmpty(message = "Cannot be null or empty")
     @Length(max = 100, message = "Maximum length is 100 characters")
     @Pattern(
             regexp = "^[A-Z][a-zA-Z]+$",
-            message = "You can only enter letters. First letter must be capital. At least 2 characters long")
+            message = "You can only enter English letters. First letter must be capital. At least 2 characters long")
     private String lastName;
 
     @NotEmpty(message = "Cannot be null or empty")
@@ -40,7 +40,7 @@ public class User implements UserDetails {
     @Pattern(
             regexp = "^([a-zA-Z0-9]+ )*[a-zA-Z0-9]+$",
             message =
-                    "You can only enter letters or numbers. At least 1 character long. Cannot begin or end with a space. No more than one space between words")
+                    "You can only enter English letters or numbers. At least 1 character long. Cannot begin or end with a space. No more than one space between words")
     @Pattern(
             regexp = "^(?!.*(fuck|shit|damn|bitch|crap|asshole|bastard|dick|piss|cunt)).*$",
             message = "Display name contains inappropriate language")
