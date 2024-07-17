@@ -1,6 +1,7 @@
 package lt.techin.recipe.controllers;
 
 import jakarta.validation.Valid;
+import lt.techin.recipe.models.Role;
 import lt.techin.recipe.models.User;
 import lt.techin.recipe.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,13 @@ public class UserController {
                 || ChronoUnit.YEARS.between(user.getDateOfBirth(), LocalDate.now()) < 13) {
             response.put("dateOfBirth", "Cannot be older than the year 1900, or younger than 13 years old");
             return ResponseEntity.status(400).body(response);
+        }
+
+        for (Role role : user.getRoles()) {
+            if (role.getId() == null) {
+                response.put("id", "Cannot be null");
+                return ResponseEntity.status(400).body(response);
+            }
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
