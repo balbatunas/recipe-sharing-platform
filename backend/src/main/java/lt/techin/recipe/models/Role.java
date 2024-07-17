@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "Roles")
 public class Role implements GrantedAuthority {
@@ -41,5 +43,17 @@ public class Role implements GrantedAuthority {
     @JsonIgnore
     public String getAuthority() {
         return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Role role)) return false;
+        return Objects.equals(id, role.id) && Objects.equals(name, role.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }
