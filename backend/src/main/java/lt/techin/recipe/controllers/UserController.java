@@ -1,5 +1,6 @@
 package lt.techin.recipe.controllers;
 
+import com.sanctionco.jmail.JMail;
 import jakarta.validation.Valid;
 import lt.techin.recipe.models.Role;
 import lt.techin.recipe.models.User;
@@ -35,6 +36,11 @@ public class UserController {
 
         if (this.userRepository.existsByDisplayName(user.getDisplayName())) {
             response.put("displayName", "Already exists");
+            return ResponseEntity.status(400).body(response);
+        }
+
+        if (JMail.strictValidator().isInvalid(user.getEmail())) {
+            response.put("email", "Does not match correct email format");
             return ResponseEntity.status(400).body(response);
         }
 
