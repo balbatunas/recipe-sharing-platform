@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 
-@CrossOrigin("http://localhost:5173/**")
+@CrossOrigin
 @RestController
 public class UserController {
 
