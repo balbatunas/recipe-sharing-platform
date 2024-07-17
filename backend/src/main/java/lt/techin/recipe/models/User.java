@@ -41,7 +41,7 @@ public class User implements UserDetails {
             message =
                     "You can only enter English letters or numbers. At least 1 character long. Cannot begin or end with a space. No more than one space between words")
     @Pattern(
-            regexp = "^(?!.*(fuck|shit|damn|bitch|crap|asshole|bastard|dick|piss|cunt)).*$",
+            regexp = "^(?i)(?!.*(fuck|shit|damn|bitch|crap|asshole|bastard|dick|piss|cunt)).*$",
             message = "Display name contains inappropriate language")
     private String displayName;
 
