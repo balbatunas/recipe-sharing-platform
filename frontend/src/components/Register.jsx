@@ -283,13 +283,13 @@ export default function Register() {
             required: true,
           })}
         />
-        {errors.birth?.type === "required" && (
+        {errors.dateOfBirth?.type === "required" && (
           <div className="text-danger">This field is required</div>
         )}
-        {errors.birth?.type === "max" && (
+        {errors.dateOfBirth?.type === "max" && (
           <div className="text-danger">Must be at least 13 years old</div>
         )}
-        {errors.birth?.type === "min" && (
+        {errors.dateOfBirth?.type === "min" && (
           <div className="text-danger">Cannot be older than 1900 year</div>
         )}
       </div>
