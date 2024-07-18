@@ -199,9 +199,7 @@ export default function Register() {
           <div className="text-danger">Maximum symbols: 200</div>
         )}
         {errors.email?.type === "pattern" && (
-          <div className="text-danger">
-            You can only enter lowercase letters
-          </div>
+          <div className="text-danger">Please check your email</div>
         )}
       </div>
 
