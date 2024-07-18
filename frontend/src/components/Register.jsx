@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const {
@@ -8,6 +9,8 @@ export default function Register() {
     setError,
     formState: { errors },
   } = useForm();
+
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     data.roles = [
@@ -27,6 +30,7 @@ export default function Register() {
 
       if (response.ok) {
         const result = await response.json();
+        navigate("/", { state: { message: "Logged in successfully" } });
         console.log("Registration successful:", result);
       } else {
         const errorData = await response.json();
