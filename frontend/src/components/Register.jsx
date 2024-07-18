@@ -131,7 +131,7 @@ export default function Register() {
           htmlFor="displayName"
           className="form-label"
         >
-          Display Name
+          Display name
         </label>
         <input
           type="text"
