@@ -63,6 +63,12 @@ public class UserController {
             }
         }
 
+        // null in constructor because payload never contains name value
+        if (user.getRoles().contains(new Role(2, null)) && !user.getRoles().contains(new Role(1, null))) {
+            response.put("id", "Cannot be an Admin (id 2) without being a User too (id 1)");
+            return ResponseEntity.status(400).body(response);
+        }
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return ResponseEntity.status(201).body(this.userRepository.save(user));
     }
