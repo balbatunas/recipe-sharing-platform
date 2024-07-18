@@ -278,7 +278,7 @@ export default function Register() {
           id="dateOfBirth"
           className="form-control"
           min="1900-01-01"
-          max="2011-07-16"
+          max="2011-07-30"
           {...register("dateOfBirth", {
             required: true,
           })}
