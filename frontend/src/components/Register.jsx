@@ -303,7 +303,7 @@ export default function Register() {
             className="form-check-input"
             value="Female"
             {...register("gender", {
-              required: true,
+              required: false,
               maxLength: 6,
               minLength: 4,
             })}
