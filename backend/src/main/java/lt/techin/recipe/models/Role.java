@@ -20,7 +20,8 @@ public class Role implements GrantedAuthority {
     @Length(min = 1, max = 100)
     private String name;
 
-    public Role(String name) {
+    public Role(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 
