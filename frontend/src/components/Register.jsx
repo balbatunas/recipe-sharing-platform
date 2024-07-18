@@ -10,6 +10,11 @@ export default function Register() {
   } = useForm();
 
   const onSubmit = async (data) => {
+    data.roles = [
+      {
+        id: 1,
+      },
+    ];
     console.log(data);
     try {
       const response = await fetch("http://localhost:8080/register", {
