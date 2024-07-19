@@ -30,7 +30,8 @@ export default function Register() {
 
       if (response.ok) {
         const result = await response.json();
-        navigate("/", { state: { message: "Logged in successfully" } });
+        navigate("/", { state: { message: "Logged in successfully !!!" } });
+
         console.log("Registration successful:", result);
       } else {
         const errorData = await response.json();
