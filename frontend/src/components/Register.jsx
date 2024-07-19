@@ -269,7 +269,7 @@ export default function Register() {
         <div className="input-group">
           <input
             type={showPassword ? "text" : "password"}
-            id="password-confirm"
+            id="repeat-password"
             className="form-control"
             autoComplete="new-password"
             {...register("passwordConfirm", {
