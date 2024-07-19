@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
 export default function Register() {
   const {
@@ -50,6 +51,10 @@ export default function Register() {
     } catch (error) {
       console.error("Network error:", error);
     }
+  };
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   const password = watch("password");
@@ -215,19 +220,28 @@ export default function Register() {
         >
           Password
         </label>
-        <input
-          autoComplete="new-password"
-          type="password"
-          id="password"
-          className="form-control"
-          {...register("password", {
-            required: true,
-            maxLength: 255,
-            minLength: 8,
-            pattern:
-              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&#]{8,}$/,
-          })}
-        />
+        <div className="input-group">
+          <input
+            autoComplete="new-password"
+            type={showPassword ? "text" : "password"}
+            id="password"
+            className="form-control"
+            {...register("password", {
+              required: true,
+              maxLength: 255,
+              minLength: 8,
+              pattern:
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&#]{8,}$/,
+            })}
+          />
+          <button
+            type="button"
+            className="btn btn-outline-secondary"
+            onClick={togglePasswordVisibility}
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
+        </div>
         {errors.password?.type === "required" && (
           <div className="text-danger">This field is required</div>
         )}
@@ -239,34 +253,44 @@ export default function Register() {
         )}
         {errors.password?.type === "pattern" && (
           <div className="text-danger">
-            Must contain at least one uppercase, lowercase letter, number, and
-            any of these special symbols: !@$%^&*
+            Minimum 8 characters, must include upper and lower case letters, a
+            number, and a special character
           </div>
         )}
       </div>
 
       <div className="mb-3">
         <label
-          htmlFor="repeat-password"
+          htmlFor="password-confirm"
           className="form-label"
         >
           Repeat password
         </label>
-        <input
-          autoComplete="new-password"
-          type="password"
-          id="repeat-password"
-          className="form-control"
-          {...register("repeatPassword", {
-            required: true,
-            validate: (value) => value === password || "Passwords do not match",
-          })}
-        />
-        {errors.repeatPassword?.type == "required" && (
+        <div className="input-group">
+          <input
+            type={showPassword ? "text" : "password"}
+            id="password-confirm"
+            className="form-control"
+            autoComplete="new-password"
+            {...register("passwordConfirm", {
+              required: true,
+              validate: (value) =>
+                value === password || "Passwords do not match",
+            })}
+          />
+          <button
+            type="button"
+            className="btn btn-outline-secondary"
+            onClick={togglePasswordVisibility}
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
+        </div>
+        {errors.passwordConfirm?.type === "required" && (
           <div className="text-danger">This field is required</div>
         )}
-        {errors.repeatPassword?.type === "validate" && (
-          <div className="text-danger">{errors.repeatPassword.message}</div>
+        {errors.passwordConfirm?.type === "validate" && (
+          <div className="text-danger">{errors.passwordConfirm.message}</div>
         )}
       </div>
       <div className="mb-3">
