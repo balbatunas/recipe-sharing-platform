@@ -322,7 +322,7 @@ export default function Register() {
       </div>
 
       <fieldset className="mb-3">
-        <label>Pick your gender (optional)</label>
+        <label>Gender (optional)</label>
         <div className="form-check">
           <input
             type="radio"
@@ -381,7 +381,7 @@ export default function Register() {
           htmlFor="country"
           className="form-label"
         >
-          Country you reside in
+          Country
         </label>
         <select
           className="form-select"
