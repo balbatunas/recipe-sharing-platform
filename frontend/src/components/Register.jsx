@@ -36,17 +36,39 @@ export default function Register() {
             message: "You have registered successfully. You can now log in",
           },
         });
-
         console.log("Registration successful:", result);
       } else {
         const errorData = await response.json();
-        if ((response.statusCode = 400)) {
-          setError("email", {
-            type: "server",
-            message: "This email already exists",
-          });
+        if (response.status === 400) {
+          // Handling field-specific errors
+          if (errorData.displayName) {
+            setError("displayName", {
+              type: "server",
+              message: errorData.displayName,
+            });
+          }
+          if (errorData.email) {
+            setError("email", {
+              type: "server",
+              message: errorData.email,
+            });
+          }
+          if (errorData.dateOfBirth) {
+            setError("dateOfBirth", {
+              type: "server",
+              message: errorData.dateOfBirth,
+            });
+          }
+          if (errorData.id) {
+            setError("roles.0.id", {
+              type: "server",
+              message: errorData.id,
+            });
+          }
+          console.error("Server validation error:", errorData);
+        } else {
+          console.error("Unexpected response:", response.status);
         }
-        console.error("Registration error:", errorData);
       }
     } catch (error) {
       console.error("Network error:", error);
@@ -178,6 +200,9 @@ export default function Register() {
         {errors.displayName?.type === "pattern2" && (
           <div className="text-danger">{errors.displayName.message}</div>
         )}
+        {errors.displayName?.type === "server" && (
+          <div className="text-danger">{errors.displayName.message}</div>
+        )}
       </div>
 
       <div className="mb-3">
@@ -210,6 +235,9 @@ export default function Register() {
         )}
         {errors.email?.type === "pattern" && (
           <div className="text-danger">Please check your email</div>
+        )}
+        {errors.email && (
+          <div className="text-danger">{errors.email.message}</div>
         )}
       </div>
 
