@@ -9,7 +9,7 @@ export default function Homepage() {
       <h4>Welcome to HomePage</h4>
       {/* Other components and content */}
       <br />
-      {message && <h2>{message}</h2>}
+      {message && <h2 className="text-danger">{message}</h2>}
     </div>
   );
 }
