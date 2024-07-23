@@ -330,10 +330,10 @@ export default function Register() {
           <div className="text-danger">This field is required</div>
         )}
         {errors.dateOfBirth?.type === "max" && (
-          <div className="text-danger">Must be at least 13 years old</div>
+          <div className="text-danger">Cannot be younger than 13 years old</div>
         )}
         {errors.dateOfBirth?.type === "min" && (
-          <div className="text-danger">Cannot be older than 1900 year</div>
+          <div className="text-danger">Cannot be older than the year 1900</div>
         )}
       </div>
 
