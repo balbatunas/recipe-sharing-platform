@@ -105,7 +105,7 @@ export default function Register() {
           })}
         />
         {errors.firstName?.type == "required" && (
-          <div className="text-danger">Cannot be null or empty</div>
+          <div className="text-danger">This field is required</div>
         )}
         {errors.firstName?.type === "maxLength" && (
           <div className="text-danger">Maximum length is 135 characters</div>
@@ -138,7 +138,7 @@ export default function Register() {
           })}
         />
         {errors.lastName?.type === "required" && (
-          <div className="text-danger">Cannot be null or empty</div>
+          <div className="text-danger">This field is required</div>
         )}
         {errors.lastName?.type === "maxLength" && (
           <div className="text-danger">Maximum length is 100 characters</div>
@@ -179,7 +179,7 @@ export default function Register() {
           })}
         />
         {errors.displayName?.type === "required" && (
-          <div className="text-danger">Cannot be null or empty</div>
+          <div className="text-danger">This field is required</div>
         )}
         {errors.displayName?.type === "minLength" && (
           <div className="text-danger">Minimum length is 1 characters</div>
@@ -217,7 +217,7 @@ export default function Register() {
           })}
         />
         {errors.email?.type === "required" && (
-          <div className="text-danger">Cannot be null or empty</div>
+          <div className="text-danger">This field is required</div>
         )}
         {errors.email?.type === "maxLength" && (
           <div className="text-danger">Maximum length 200 characters</div>
@@ -262,7 +262,7 @@ export default function Register() {
           </button>
         </div>
         {errors.password?.type === "required" && (
-          <div className="text-danger">Cannot be null or empty</div>
+          <div className="text-danger">This field is required</div>
         )}
         {errors.password?.type === "maxLength" && (
           <div className="text-danger">maximum length 255 characters</div>
@@ -303,7 +303,7 @@ export default function Register() {
           </button>
         </div>
         {errors.passwordConfirm?.type === "required" && (
-          <div className="text-danger">Cannot be null or empty</div>
+          <div className="text-danger">This field is required</div>
         )}
         {errors.passwordConfirm?.type === "validate" && (
           <div className="text-danger">{errors.passwordConfirm.message}</div>
@@ -321,13 +321,13 @@ export default function Register() {
           id="dateOfBirth"
           className="form-control"
           min="1900-01-01"
-          max="2011-07-30"
+          max="2011-07-23"
           {...register("dateOfBirth", {
             required: true,
           })}
         />
         {errors.dateOfBirth?.type === "required" && (
-          <div className="text-danger">Cannot be null or empty</div>
+          <div className="text-danger">This field is required</div>
         )}
         {errors.dateOfBirth?.type === "max" && (
           <div className="text-danger">Must be at least 13 years old</div>
@@ -615,7 +615,7 @@ export default function Register() {
           <option value="Zimbabwe">Zimbabwe</option>
         </select>
         {errors.country?.type === "required" && (
-          <div className="text-danger">Cannot be null or empty</div>
+          <div className="text-danger">This field is required</div>
         )}
       </div>
 
