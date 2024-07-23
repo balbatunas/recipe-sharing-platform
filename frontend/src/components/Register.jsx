@@ -170,22 +170,22 @@ export default function Register() {
             validate: {
               pattern1: (value) =>
                 /^[a-zA-Z0-9]+(\s[a-zA-Z0-9]+)*$/i.test(value) ||
-                "You can only enter letters or numbers, no more than one space between words",
+                "You can only enter English letters or numbers. At least 1 character long. Cannot begin or end with a space. No more than one space between words",
               pattern2: (value) =>
                 !/(?:fuck|shit|damn|bitch|crap|asshole|bastard|dick|piss|cunt)/i.test(
                   value
-                ) || "Display name can't contain inappropriate language",
+                ) || "Display name contains inappropriate language",
             },
           })}
         />
         {errors.displayName?.type === "required" && (
-          <div className="text-danger">This field is required</div>
+          <div className="text-danger">Cannot be null or empty</div>
         )}
         {errors.displayName?.type === "minLength" && (
-          <div className="text-danger">Minimum symbols: 1</div>
+          <div className="text-danger">Minimum length is 1 characters</div>
         )}
         {errors.displayName?.type === "maxLength" && (
-          <div className="text-danger">Maximum symbols: 255</div>
+          <div className="text-danger">Maximum length is 255 characters</div>
         )}
         {errors.displayName?.type === "pattern1" && (
           <div className="text-danger">{errors.displayName.message}</div>
