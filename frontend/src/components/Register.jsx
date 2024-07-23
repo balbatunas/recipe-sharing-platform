@@ -166,7 +166,6 @@ export default function Register() {
           {...register("displayName", {
             required: true,
             maxLength: 255,
-            minLength: 1,
             validate: {
               pattern1: (value) =>
                 /^[a-zA-Z0-9]+(\s[a-zA-Z0-9]+)*$/i.test(value) ||
@@ -180,9 +179,6 @@ export default function Register() {
         />
         {errors.displayName?.type === "required" && (
           <div className="text-danger">This field is required</div>
-        )}
-        {errors.displayName?.type === "minLength" && (
-          <div className="text-danger">Minimum length is 1 characters</div>
         )}
         {errors.displayName?.type === "maxLength" && (
           <div className="text-danger">Maximum length is 255 characters</div>
