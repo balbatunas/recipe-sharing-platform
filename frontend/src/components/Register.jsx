@@ -266,15 +266,15 @@ export default function Register() {
           <div className="text-danger">Cannot be null or empty</div>
         )}
         {errors.password?.type === "minLength" && (
-          <div className="text-danger">Minimum symbols: 8</div>
+          <div className="text-danger">Minimum length 8 characters</div>
         )}
         {errors.password?.type === "maxLength" && (
-          <div className="text-danger">Maximum symbols: 255</div>
+          <div className="text-danger">maximum length 255 characters</div>
         )}
         {errors.password?.type === "pattern" && (
           <div className="text-danger">
-            Minimum 8 characters, must include upper and lower case letters, a
-            number, and a special character
+            Must contain at least one uppercase letter, one lowercase letter,
+            one number, and any one of these special symbols: !@#$%^&*".
           </div>
         )}
       </div>
