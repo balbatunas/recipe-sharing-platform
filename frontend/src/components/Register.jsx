@@ -105,15 +105,15 @@ export default function Register() {
           })}
         />
         {errors.firstName?.type == "required" && (
-          <div className="text-danger">This field is required</div>
+          <div className="text-danger">Cannot be null or empty</div>
         )}
         {errors.firstName?.type === "maxLength" && (
-          <div className="text-danger">Maximum symbols: 135</div>
+          <div className="text-danger">Maximum length is 135 characters</div>
         )}
         {errors.firstName?.type === "pattern" && (
           <div className="text-danger">
-            You can only enter letters. First letter must be capital. At least 2
-            characters long
+            You can only enter English letters. First letter must be capital. At
+            least 2 characters long.
           </div>
         )}
       </div>
@@ -138,15 +138,15 @@ export default function Register() {
           })}
         />
         {errors.lastName?.type === "required" && (
-          <div className="text-danger">This field is required</div>
+          <div className="text-danger">Cannot be null or empty</div>
         )}
         {errors.lastName?.type === "maxLength" && (
-          <div className="text-danger">Maximum symbols: 100</div>
+          <div className="text-danger">Maximum length is 100 characters</div>
         )}
         {errors.lastName?.type === "pattern" && (
           <div className="text-danger">
-            You can only enter letters. First letter must be capital. At least 2
-            characters long
+            You can only enter English letters. First letter must be capital. At
+            least 2 characters long.
           </div>
         )}
       </div>
