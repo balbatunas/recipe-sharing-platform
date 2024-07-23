@@ -1,9 +1,9 @@
 package lt.techin.recipe.controllers;
 
-import com.sanctionco.jmail.JMail;
 import jakarta.validation.Valid;
 import lt.techin.recipe.models.Role;
 import lt.techin.recipe.models.User;
+import lt.techin.recipe.repositories.RoleRepository;
 import lt.techin.recipe.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +23,14 @@ public class UserController {
 
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
+    private RoleRepository roleRepository;
 
     @Autowired
-    public void UserRepository(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public void UserRepository(
+            UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.roleRepository = roleRepository;
     }
 
     @PostMapping("/register")
@@ -36,11 +39,6 @@ public class UserController {
 
         if (this.userRepository.existsByDisplayName(user.getDisplayName())) {
             response.put("displayName", "Already exists");
-            return ResponseEntity.status(400).body(response);
-        }
-
-        if (JMail.strictValidator().isInvalid(user.getEmail())) {
-            response.put("email", "Does not match correct email format");
             return ResponseEntity.status(400).body(response);
         }
 
@@ -61,6 +59,17 @@ public class UserController {
                 response.put("id", "Cannot be null");
                 return ResponseEntity.status(400).body(response);
             }
+
+            if (!this.roleRepository.existsById(role.getId())) {
+                response.put("id", "Role id " + role.getId() + " does not exist");
+                return ResponseEntity.status(400).body(response);
+            }
+        }
+
+        // null in constructor because payload never contains name value
+        if (user.getRoles().contains(new Role(2, null)) && !user.getRoles().contains(new Role(1, null))) {
+            response.put("id", "Cannot be an Admin (id 2) without being a User too (id 1)");
+            return ResponseEntity.status(400).body(response);
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));

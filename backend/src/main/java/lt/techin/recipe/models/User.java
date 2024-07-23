@@ -1,9 +1,12 @@
 package lt.techin.recipe.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lt.techin.recipe.order.FirstOrder;
+import lt.techin.recipe.order.SecondOrder;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +17,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Users")
+@GroupSequence({User.class, FirstOrder.class, SecondOrder.class})
 public class User implements UserDetails {
 
     @Id
@@ -46,15 +50,28 @@ public class User implements UserDetails {
     private String displayName;
 
     @NotEmpty(message = "Cannot be null or empty")
-    @Length(min = 5, max = 200, message = "Minimum length 5 characters, maximum length 200 characters")
+    @Length(
+            min = 5,
+            max = 200,
+            message = "Minimum length 5 characters, maximum length 200 characters",
+            groups = FirstOrder.class)
+    @Pattern(
+            regexp = "^[a-z0-9._-]+@[a-z]+\\.[a-z]+$",
+            message = "May only contain English letters, all lowercase. Can contain numbers, and these symbols ._-",
+            groups = SecondOrder.class)
     private String email;
 
     @NotEmpty(message = "Cannot be null or empty")
-    @Length(min = 8, max = 255, message = "Minimum length 8 characters, maximum length 255 characters")
+    @Length(
+            min = 8,
+            max = 255,
+            message = "Minimum length 8 characters, maximum length 255 characters",
+            groups = FirstOrder.class)
     @Pattern(
             regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*]).+$",
             message =
-                    "Must contain at least one uppercase letter, one lowercase letter, one number, and any one of these special symbols: !@#$%^&*")
+                    "Must contain at least one uppercase letter, one lowercase letter, one number, and any one of these special symbols: !@#$%^&*",
+            groups = SecondOrder.class)
     private String password;
 
     @NotNull(message = "Cannot be null or empty")
