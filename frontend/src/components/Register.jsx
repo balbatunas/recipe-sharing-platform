@@ -213,17 +213,20 @@ export default function Register() {
           {...register("email", {
             required: true,
             maxLength: 200,
-            pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/, // Pattern to allow only lowercase letters and valid email characters
+            pattern: /^[a-z0-9._-]+@[a-z]+\.[a-z]+$/, // Pattern to allow only lowercase letters and valid email characters
           })}
         />
         {errors.email?.type === "required" && (
-          <div className="text-danger">This field is required</div>
+          <div className="text-danger">Cannot be null or empty</div>
         )}
         {errors.email?.type === "maxLength" && (
-          <div className="text-danger">Maximum symbols: 200</div>
+          <div className="text-danger">Maximum length 200 characters</div>
         )}
         {errors.email?.type === "pattern" && (
-          <div className="text-danger">Please check your email</div>
+          <div className="text-danger">
+            May only contain English letters, all lowercase. Can contain
+            numbers, and these symbols ._-
+          </div>
         )}
         {errors.email && (
           <div className="text-danger">{errors.email.message}</div>
@@ -260,7 +263,7 @@ export default function Register() {
           </button>
         </div>
         {errors.password?.type === "required" && (
-          <div className="text-danger">This field is required</div>
+          <div className="text-danger">Cannot be null or empty</div>
         )}
         {errors.password?.type === "minLength" && (
           <div className="text-danger">Minimum symbols: 8</div>
@@ -304,7 +307,7 @@ export default function Register() {
           </button>
         </div>
         {errors.passwordConfirm?.type === "required" && (
-          <div className="text-danger">This field is required</div>
+          <div className="text-danger">Cannot be null or empty</div>
         )}
         {errors.passwordConfirm?.type === "validate" && (
           <div className="text-danger">{errors.passwordConfirm.message}</div>
@@ -328,7 +331,7 @@ export default function Register() {
           })}
         />
         {errors.dateOfBirth?.type === "required" && (
-          <div className="text-danger">This field is required</div>
+          <div className="text-danger">Cannot be null or empty</div>
         )}
         {errors.dateOfBirth?.type === "max" && (
           <div className="text-danger">Must be at least 13 years old</div>
@@ -616,7 +619,7 @@ export default function Register() {
           <option value="Zimbabwe">Zimbabwe</option>
         </select>
         {errors.country?.type === "required" && (
-          <div className="text-danger">This field is required</div>
+          <div className="text-danger">Cannot be null or empty</div>
         )}
       </div>
 
