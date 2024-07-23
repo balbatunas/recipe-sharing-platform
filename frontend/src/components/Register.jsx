@@ -133,15 +133,12 @@ export default function Register() {
           {...register("lastName", {
             required: true,
             maxLength: 100,
-            minLength: 2,
-            pattern: /^[A-Z][a-zA-Z]*$/,
+
+            pattern: /^[A-Z][a-zA-Z]+$/,
           })}
         />
         {errors.lastName?.type === "required" && (
           <div className="text-danger">This field is required</div>
-        )}
-        {errors.lastName?.type === "minLength" && (
-          <div className="text-danger">Minimum symbols: 2</div>
         )}
         {errors.lastName?.type === "maxLength" && (
           <div className="text-danger">Maximum symbols: 100</div>
