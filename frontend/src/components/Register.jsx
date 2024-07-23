@@ -316,8 +316,6 @@ export default function Register() {
           type="date"
           id="dateOfBirth"
           className="form-control"
-          min="1900-01-01"
-          max="2011-07-23"
           {...register("dateOfBirth", {
             required: true,
           })}
@@ -325,11 +323,8 @@ export default function Register() {
         {errors.dateOfBirth?.type === "required" && (
           <div className="text-danger">This field is required</div>
         )}
-        {errors.dateOfBirth?.type === "max" && (
-          <div className="text-danger">Cannot be younger than 13 years old</div>
-        )}
-        {errors.dateOfBirth?.type === "min" && (
-          <div className="text-danger">Cannot be older than the year 1900</div>
+        {errors.dateOfBirth && (
+          <div className="text-danger">{errors.dateOfBirth.message}</div>
         )}
       </div>
 
