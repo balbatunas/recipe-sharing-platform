@@ -274,7 +274,7 @@ export default function Register() {
 
       <div className="mb-3">
         <label
-          htmlFor="password-confirm"
+          htmlFor="repeat-password"
           className="form-label"
         >
           Repeat password
