@@ -163,7 +163,7 @@ export default function Register() {
           type="text"
           id="displayName"
           className="form-control"
-          autoComplete="off"
+          autoComplete="username"
           {...register("displayName", {
             required: true,
             maxLength: 255,
