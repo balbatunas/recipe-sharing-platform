@@ -85,6 +85,7 @@ export default function Register() {
     <form
       className="col-12 col-md-4 mx-auto"
       onSubmit={handleSubmit(onSubmit)}
+      noValidate
     >
       <div className="mb-3">
         <label
@@ -321,7 +322,9 @@ export default function Register() {
           })}
         />
         {errors.dateOfBirth?.type === "required" && (
-          <div className="text-danger">This field is required</div>
+          <div className="text-danger">
+            This field is required, and must be valid
+          </div>
         )}
         {errors.dateOfBirth && (
           <div className="text-danger">{errors.dateOfBirth.message}</div>
