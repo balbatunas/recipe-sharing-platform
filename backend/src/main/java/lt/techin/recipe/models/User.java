@@ -56,7 +56,7 @@ public class User implements UserDetails {
             message = "Minimum length 5 characters, maximum length 200 characters",
             groups = FirstOrder.class)
     @Pattern(
-            regexp = "^[a-z0-9._-]+@[a-z]+\\.[a-z]+$",
+            regexp = "^[a-z0-9._-]+@[a-z0-9]+\\.[a-z]+$",
             message = "May only contain English letters, all lowercase. Can contain numbers, and these symbols ._-",
             groups = SecondOrder.class)
     private String email;
