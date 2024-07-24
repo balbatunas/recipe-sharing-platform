@@ -246,8 +246,7 @@ export default function Register() {
             {...register("password", {
               required: true,
               maxLength: 255,
-              pattern:
-                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&#]{8,}$/,
+              pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*"]).+$/,
             })}
           />
           <button
