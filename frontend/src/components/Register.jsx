@@ -332,7 +332,12 @@ export default function Register() {
       </div>
 
       <fieldset className="mb-3">
-        <label>Gender (optional)</label>
+        <label
+          htmlFor="female"
+          className="form-label"
+        >
+          Gender (optional)
+        </label>
         <div className="form-check">
           <input
             type="radio"
