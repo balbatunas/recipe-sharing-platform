@@ -350,7 +350,7 @@ export default function Register() {
             })}
           />
           <label
-            htmlFor="female"
+            htmlFor="female2"
             className="form-check-label"
           >
             Female
