@@ -338,7 +338,7 @@ export default function Register() {
         </div>
 
         <fieldset className="mb-3">
-          <legend className="leg">Gender (optional)</legend>
+          <legend className="legend-size">Gender (optional)</legend>
 
           <div className="form-check">
             <input
