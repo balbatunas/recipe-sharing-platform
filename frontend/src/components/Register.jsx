@@ -246,7 +246,7 @@ export default function Register() {
             {...register("password", {
               required: true,
               maxLength: 255,
-              pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*"]).+$/,
+              pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*]).+$/,
             })}
           />
           <button
@@ -266,7 +266,7 @@ export default function Register() {
         {errors.password?.type === "pattern" && (
           <div className="text-danger">
             Must contain at least one uppercase letter, one lowercase letter,
-            one number, and any one of these special symbols: !@#$%^&*".
+            one number, and any one of these special symbols: !@#$%^&*
           </div>
         )}
       </div>
