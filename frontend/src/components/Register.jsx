@@ -87,6 +87,7 @@ export default function Register() {
       onSubmit={handleSubmit(onSubmit)}
       noValidate
     >
+      <h1>R-S-P</h1>
       <div className="mb-3">
         <label
           htmlFor="first-name"
