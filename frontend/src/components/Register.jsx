@@ -248,8 +248,9 @@ export default function Register() {
               {...register("password", {
                 required: true,
                 maxLength: 255,
+                minLength: 8,
                 pattern:
-                  /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*]).+$/,
+                  /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/,
               })}
             />
             <button
@@ -265,6 +266,9 @@ export default function Register() {
           )}
           {errors.password?.type === "maxLength" && (
             <div className="text-danger">maximum length 255 characters</div>
+          )}
+          {errors.password?.type === "minLength" && (
+            <div className="text-danger">Minimum length 8 characters</div>
           )}
           {errors.password?.type === "pattern" && (
             <div className="text-danger">
