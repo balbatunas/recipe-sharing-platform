@@ -83,7 +83,7 @@ export default function Register() {
 
   return (
     <div>
-      <h1 className="text-info text-center">Register a new account</h1>
+      <h1 className="text-center">Register a new account</h1>
       <form
         className="col-12 col-md-4 mx-auto"
         onSubmit={handleSubmit(onSubmit)}
@@ -212,7 +212,7 @@ export default function Register() {
             {...register("email", {
               required: true,
               maxLength: 200,
-              pattern: /^[a-z0-9._-]+@[a-z0-9]+\.[a-z]+$/, // Pattern to allow only lowercase letters and valid email characters
+              pattern: /^[a-z0-9._-]+@[a-z0-9]+\.[a-z.]+$/, // Pattern to allow only lowercase letters and valid email characters
             })}
           />
           {errors.email?.type === "required" && (
