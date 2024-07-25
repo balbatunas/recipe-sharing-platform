@@ -82,8 +82,8 @@ export default function Register() {
   const password = watch("password");
 
   return (
-    <body>
-      <h1 class="text-info">Register a new account</h1>
+    <div>
+      <h1 className="text-info">Register a new account</h1>
       <form
         className="col-12 col-md-4 mx-auto"
         onSubmit={handleSubmit(onSubmit)}
@@ -646,6 +646,6 @@ export default function Register() {
 
         <button className="btn btn-primary">Submit</button>
       </form>
-    </body>
+    </div>
   );
 }
