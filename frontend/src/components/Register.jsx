@@ -83,7 +83,7 @@ export default function Register() {
 
   return (
     <div>
-      <h1 className="text-info">Register a new account</h1>
+      <h1 className="text-info text-center">Register a new account</h1>
       <form
         className="col-12 col-md-4 mx-auto"
         onSubmit={handleSubmit(onSubmit)}
