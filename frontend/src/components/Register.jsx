@@ -333,7 +333,7 @@ export default function Register() {
           />
           {errors.dateOfBirth?.type === "required" && (
             <div className="text-danger">
-              This field is required, and must be valid
+              This field is required
             </div>
           )}
           {errors.dateOfBirth && (
