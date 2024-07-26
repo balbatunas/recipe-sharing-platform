@@ -23,7 +23,7 @@ export default function Homepage() {
       {showToast ? (
         <RegisterSuccessToast message={message} />
       ) : (
-        <h4>Welcome to HomePage</h4>
+        <h1>Welcome to HomePage</h1>
       )}
     </div>
   );
