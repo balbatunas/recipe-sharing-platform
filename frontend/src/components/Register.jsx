@@ -212,7 +212,7 @@ export default function Register() {
             {...register("email", {
               required: true,
               maxLength: 200,
-              pattern: /^[a-z0-9._-]+@[a-z0-9]+\.[a-z.]+$/, // Pattern to allow only lowercase letters and valid email characters
+              pattern: /^[a-z0-9._-]+@[a-z0-9-]+\.[a-z.]+$/, // Pattern to allow only lowercase letters and valid email characters
             })}
           />
           {errors.email?.type === "required" && (
