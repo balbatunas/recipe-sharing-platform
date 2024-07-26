@@ -116,7 +116,7 @@ export default function Register() {
           {errors.firstName?.type === "pattern" && (
             <div className="text-danger">
               You can only enter English letters. First letter must be capital.
-              At least 2 characters long.
+              At least 2 characters long
             </div>
           )}
         </div>
@@ -149,7 +149,7 @@ export default function Register() {
           {errors.lastName?.type === "pattern" && (
             <div className="text-danger">
               You can only enter English letters. First letter must be capital.
-              At least 2 characters long.
+              At least 2 characters long
             </div>
           )}
         </div>
