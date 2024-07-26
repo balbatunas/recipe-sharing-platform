@@ -220,7 +220,7 @@ export default function Register() {
             <div className="text-danger">This field is required</div>
           )}
           {errors.email?.type === "maxLength" && (
-            <div className="text-danger">Mmaximum length 200 characters</div>
+            <div className="text-danger">Maximum length 200 characters</div>
           )}
           {errors.email?.type === "minLength" && (
             <div className="text-danger">Minimum length 5 characters</div>
