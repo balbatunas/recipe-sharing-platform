@@ -212,6 +212,7 @@ export default function Register() {
             {...register("email", {
               required: true,
               maxLength: 200,
+              minLength: 5,
               pattern: /^[a-z0-9._-]+@[a-z0-9-]+\.[a-z.]+$/, // Pattern to allow only lowercase letters and valid email characters
             })}
           />
@@ -219,9 +220,10 @@ export default function Register() {
             <div className="text-danger">This field is required</div>
           )}
           {errors.email?.type === "maxLength" && (
-            <div className="text-danger">
-              Minimum length 5 characters, maximum length 200 characters
-            </div>
+            <div className="text-danger">Mmaximum length 200 characters</div>
+          )}
+          {errors.email?.type === "minLength" && (
+            <div className="text-danger">Minimum length 5 characters</div>
           )}
           {errors.email?.type === "pattern" && (
             <div className="text-danger">
