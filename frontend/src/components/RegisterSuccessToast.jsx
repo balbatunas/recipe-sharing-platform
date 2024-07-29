@@ -24,7 +24,7 @@ export default function RegisterSuccessToast({ message }) {
             <rect
               width="100%"
               height="100%"
-              fill="#007aff"
+              fill="green"
             ></rect>
           </svg>
           <strong className="me-auto">Success</strong>
