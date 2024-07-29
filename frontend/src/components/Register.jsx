@@ -235,7 +235,7 @@ export default function Register() {
               numbers, and these symbols ._-
             </div>
           )}
-          {errors.email && (
+          {errors.email?.type === "server" && (
             <div className="text-danger">{errors.email.message}</div>
           )}
         </div>
