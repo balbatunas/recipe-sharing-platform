@@ -338,7 +338,7 @@ export default function Register() {
           {errors.dateOfBirth?.type === "required" && (
             <div className="text-danger">This field is required</div>
           )}
-          {errors.dateOfBirth && (
+          {errors.dateOfBirth?.type === "server" && (
             <div className="text-danger">{errors.dateOfBirth.message}</div>
           )}
         </div>
@@ -649,7 +649,7 @@ export default function Register() {
           )}
         </div>
 
-        {errors.networkError && (
+        {errors.networkError?.type === "server" && (
           <div className="text-danger">{errors.networkError.message}</div>
         )}
         <button className="btn btn-primary">Submit</button>
