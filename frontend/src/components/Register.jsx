@@ -72,6 +72,10 @@ export default function Register() {
       }
     } catch (error) {
       console.error("Network error:", error);
+      setError("networkError", {
+        type: "server",
+        message: "Something went wrong with the server",
+      });
     }
   };
   const [showPassword, setShowPassword] = useState(false);
@@ -332,9 +336,7 @@ export default function Register() {
             })}
           />
           {errors.dateOfBirth?.type === "required" && (
-            <div className="text-danger">
-              This field is required
-            </div>
+            <div className="text-danger">This field is required</div>
           )}
           {errors.dateOfBirth && (
             <div className="text-danger">{errors.dateOfBirth.message}</div>
@@ -647,6 +649,9 @@ export default function Register() {
           )}
         </div>
 
+        {errors.networkError && (
+          <div className="text-danger">{errors.networkError.message}</div>
+        )}
         <button className="btn btn-primary">Submit</button>
       </form>
     </div>
